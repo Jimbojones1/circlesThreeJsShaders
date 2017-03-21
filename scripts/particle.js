@@ -251,6 +251,9 @@ function init() {
       var sphere = new THREE.SphereGeometry(min, 32)
         // geometry.radius = radius;
 
+
+
+
       var shaderMaterial = new THREE.ShaderMaterial({
                             uniforms:       uniforms,
                             vertexShader:   document.getElementById('vertexShader').textContent,
@@ -260,7 +263,7 @@ function init() {
 
 
 
-      console.log(sphere,  'this is sphere')
+
 
       // sphere.addAttribute( 'userColor', new THREE.BufferAttribute( color, 3 ) );
 
@@ -386,9 +389,16 @@ function render() {
           var amplitude = timeFloatData[j] * matrix.colorIntensity;
           scene.children[j].colorsNeedUpdate = true;
           scene.children[j].material.uniforms.amplitude.value = amplitude;
-          scene.children[j].material.uniforms.color.value.r = Math.random()
-          scene.children[j].material.uniforms.color.value.g = Math.random()
-          scene.children[j].material.uniforms.color.value.b = Math.random()
+          if(scene.children[j].geometry.radius > 10){
+
+          }
+          else {
+            scene.children[j].material.uniforms.color.value.r = Math.random()
+            scene.children[j].material.uniforms.color.value.g = Math.random()
+            scene.children[j].material.uniforms.color.value.b = Math.random()
+          }
+
+
           // var timer = Date.now() - start;
           // points.material.size = 0.4 + (timeFloatData[j] * (matrix.sizeIntensity/10));
           // if (j%3 !== 0 && j%2 !==0){
