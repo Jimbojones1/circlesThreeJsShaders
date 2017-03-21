@@ -251,14 +251,14 @@ function init() {
           }
 
 
-      // var texture = new THREE.TextureLoader().load( "./styles/particle.png" );
+      var texture = new THREE.TextureLoader().load( "./styles/particle.png" );
 
       var color = new THREE.Color(Math.random(), Math.random(), Math.random())
 
       uniforms = {
           "amplitude": { value: 1 },
             "color": { value:  color}
-            // "texture": { value: texture }
+            "texture": { value: texture }
 
         }
 
