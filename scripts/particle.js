@@ -257,8 +257,8 @@ function init() {
 
       uniforms = {
           "amplitude": { value: 1 },
-            "color": { value:  color},
-            "texture": { value: texture }
+            "color": { value:  color}
+            // "texture": { value: texture }
 
         }
 
