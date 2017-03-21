@@ -32,22 +32,10 @@ var GuiControls = function(){
     this.zoomSpeed = 8;
     this.colorIntensity = 0.25;
     this.rotationSpeed = 1;
-    this.sphere = false;
-    this.donut = true;
-    this.longDonut = false;
-    this.perogi = false;
-    this.square = false;
-    this.quadangle = false;
-    this.infinity = false;
-    this.hourglass = false;
-    this.spade = false;
-    this.particleOne = 0x00ff00;
-    this.particleTwo = 0x0000ff;
-    this.particleThree = 0xff0000;
     this.sizeIntensity = 2.5;
     this.animate = true;
     this.camera = true;
-    this.z = 30;
+    this.z = 44;
 
 };
 
@@ -63,9 +51,7 @@ gui.add(matrix, 'colorIntensity', 0, 5).step(0.01).name('Flash Intensity');
 gui.add(matrix, 'sizeIntensity', 0, 15).step(0.5).name('Size Intensity');
 gui.add(matrix, 'zoomSpeed', 0, 25).step(0.1).name('Zoom Speed');
 gui.add(matrix, 'rotationSpeed', 0, 25).step(0.1).name('Z-index Rotation Speed');
-gui.addColor(matrix, 'particleOne').name('Color 1');
-gui.addColor(matrix, 'particleTwo').name('Color 2');
-gui.addColor(matrix, 'particleThree').name('Color 3');
+
 
 // var stats = new Stats();
 // stats.showPanel( 0 );
@@ -181,7 +167,7 @@ function init() {
 
 
 
-        c.geometry.radius -= 0.4
+        c.geometry.radius -= 0.5
           // scene.add( ci );
           // c.x =  2  * Math.random() * width;
           // c.y = Math.random() * height
