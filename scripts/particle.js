@@ -167,7 +167,7 @@ function init() {
 
 
 
-        c.geometry.radius -= 0.5
+        c.geometry.radius -= 0.3
           // scene.add( ci );
           // c.x =  2  * Math.random() * width;
           // c.y = Math.random() * height
@@ -299,7 +299,7 @@ function init() {
         // console.log(dista, ' in flase', c.geometry.radius, c2.geometry.radius)
         // if the distance of the radi is less then the sum of the radius
         // then they are touching
-        if(dista < c.geometry.radius/3.8+ c2.geometry.radius/3.8 ){
+        if(dista < c.geometry.radius/3.7+ c2.geometry.radius/3.7 ){
           // console.log(dist, dy, dx )
 
           return false;
