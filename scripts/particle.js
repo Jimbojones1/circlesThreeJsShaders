@@ -167,7 +167,7 @@ function init() {
 
 
 
-        c.geometry.radius -= 0.3
+        c.geometry.radius -= 0.7
           // scene.add( ci );
           // c.x =  2  * Math.random() * width;
           // c.y = Math.random() * height
@@ -237,13 +237,14 @@ function init() {
           }
 
 
-      var texture = new THREE.TextureLoader().load( "./styles/particle.png" );
+      // var texture = new THREE.TextureLoader().load( "./styles/particle.png" );
 
       var color = new THREE.Color(Math.random(), Math.random(), Math.random())
 
       uniforms = {
           "amplitude": { value: 1 },
-            "color": { value:  color}
+            "color": { value:  color},
+            "rad": {type: 'f', value: 10.0}
             // "texture": { value: texture }
 
         }
@@ -269,6 +270,8 @@ function init() {
 
       var mesh = new THREE.Mesh( sphere, shaderMaterial );
       mesh.geometry.radius = min
+
+
       mesh.position.set(x, y, 0)
 
      return mesh
@@ -313,7 +316,10 @@ function init() {
     function drawCircle(ci,x,y){
       // console.log(ci.geometry.radius)
       // console.log(ci)
+      ci.material.uniforms.rad.needsUpdate = true;
       ci.scale.set(ci.geometry.radius, ci.geometry.radius, ci.geometry.radius)
+      ci.material.uniforms.rad.value = ci.geometry.radius
+
       scene.add( ci );
 
 
@@ -385,12 +391,20 @@ function render() {
           if(!app.audio && !app.microphone){
               timeFloatData[j] = 0;
           }
+
+          scene.children[j].geometry.dynamic = true
+          scene.children[j].geometry.verticesNeedUpdate = true
+          scene.children[j].material.uniforms.rad.value.needsUpdate = true;
+
           var r, g, b;
           var amplitude = timeFloatData[j] * matrix.colorIntensity;
           scene.children[j].colorsNeedUpdate = true;
+
           scene.children[j].material.uniforms.amplitude.value = amplitude;
           if(scene.children[j].geometry.radius > 10){
-            scene.children[j].rotation.x += 0.1;
+            // scene.children[j].rotation.x += 0.1;
+            // scene.children[j].rotation.y += 0.1;
+
           }
           else {
             scene.children[j].material.uniforms.color.value.r = Math.random()
