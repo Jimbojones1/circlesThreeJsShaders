@@ -89,7 +89,7 @@
 
       if(rad > 10.0){
 
-             gl_FragColor = vec4(sin(color[0]) + dProd, sin(p.x) + dProd, 1, 1);
+             gl_FragColor = vec4(sin(color[0]) + dProd, sin(p.x) + dProd + sin(p.y), sin(p.y) + dProd, 1);
       }
       else {
 

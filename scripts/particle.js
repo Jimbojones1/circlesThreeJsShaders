@@ -68,7 +68,7 @@ function calcFieldOFView(){
 }
 var circles = [],
             min    =  0.5,
-           max     = 15;
+           max     = 20;
 
 
 
@@ -316,7 +316,7 @@ function init() {
     function drawCircle(ci,x,y){
       // console.log(ci.geometry.radius)
       // console.log(ci)
-      ci.material.uniforms.rad.needsUpdate = true;
+      // ci.material.uniforms.rad.needsUpdate = true;
       ci.scale.set(ci.geometry.radius, ci.geometry.radius, ci.geometry.radius)
       ci.material.uniforms.rad.value = ci.geometry.radius
 
@@ -394,7 +394,7 @@ function render() {
 
           scene.children[j].geometry.dynamic = true
           scene.children[j].geometry.verticesNeedUpdate = true
-          scene.children[j].material.uniforms.rad.value.needsUpdate = true;
+
 
           var r, g, b;
           var amplitude = timeFloatData[j] * matrix.colorIntensity;
