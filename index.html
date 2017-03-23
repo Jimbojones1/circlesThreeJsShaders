@@ -20,13 +20,13 @@
     attribute float displacement;
     varying vec3 vNormal;
     varying vec3 p;
-    // varying vec3 vColor;
+    varying vec3 vColor;
 
     varying float musicBox;
     void main() {
 
       vNormal = normal;
-
+      vColor = color;
       // vColor  = color;
       musicBox = amplitude;
       // gl_PointSize — contains size of rasterized points, in pixels
@@ -69,8 +69,8 @@
     uniform sampler2D texture;
     varying vec3 p;
     // vec3 r;
-      uniform vec3 color;
-    // varying vec3 vColor;
+    uniform vec3 userColor;
+    varying vec3 vColor;
      varying float musicBox;
     void main()
     {
@@ -78,6 +78,9 @@
       // calc the dot product and clamp
       // // 0 -> 1 rather than -1 -> 1
       vec3 light = vec3(0.8, 1.0, 0.6);
+
+
+
 
       // // ensure it's normalized
       light = normalize(light);
@@ -87,16 +90,16 @@
       // // the light to the vertex normal
       float dProd = max(0.9, dot(vNormal, light));
 
-      if(rad > 10.0){
+      if(rad > 13.0){
 
-             gl_FragColor = vec4(sin(color[0]) + dProd, sin(p.x) + dProd + sin(p.y), sin(p.y) + dProd, 1);
+             gl_FragColor = vec4(vColor[0], vColor[1], vColor[2], 1);
       }
       else {
 
              gl_FragColor = vec4(
-              color[0],
-              color[1],
-              color[2],
+              userColor[0],
+              userColor[1],
+              userColor[2],
              1);
       };
 
@@ -106,11 +109,10 @@
      // feed into our frag colour
       // gl_FragColor = gl_FragColor;  // A
 
-      // gl_FragColor = vec4(color[0]  + musicBox, // R
-      //                     color[1] + musicBox, // G
-      //                     color[2]  + musicBox, // B
-      //                     1
-      // ) ;
+      // gl_FragColor = vec4(1, // R
+      //                     1, // G
+      //                     1, // B
+      //                     1) ;
 
 
     }

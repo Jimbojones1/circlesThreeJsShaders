@@ -39,6 +39,8 @@ var GuiControls = function(){
 
 };
 
+
+
 var matrix = new GuiControls();
 
 var gui = new dat.GUI();
@@ -239,11 +241,11 @@ function init() {
 
       // var texture = new THREE.TextureLoader().load( "./styles/particle.png" );
 
-      var color = new THREE.Color(Math.random(), Math.random(), Math.random())
+      var userColor = new THREE.Color(Math.random(), Math.random(), Math.random())
 
       uniforms = {
           "amplitude": { value: 1 },
-            "color": { value:  color},
+            "userColor": { value:  userColor},
             "rad": {type: 'f', value: 10.0}
             // "texture": { value: texture }
 
@@ -257,6 +259,7 @@ function init() {
 
       var shaderMaterial = new THREE.ShaderMaterial({
                             uniforms:       uniforms,
+                            vertexColors: THREE.VertexColors,
                             vertexShader:   document.getElementById('vertexShader').textContent,
                             fragmentShader: document.getElementById('fragmentShader').textContent,
                             transparent: true
@@ -387,29 +390,49 @@ function render() {
     }
 
 
-      for (var j = 1; j < scene.children.length; j++){
+      for (var j = 0; j < circles.length; j++){
           if(!app.audio && !app.microphone){
               timeFloatData[j] = 0;
           }
 
-          scene.children[j].geometry.dynamic = true
-          scene.children[j].geometry.verticesNeedUpdate = true
 
 
-          var r, g, b;
+
+
           var amplitude = timeFloatData[j] * matrix.colorIntensity;
-          scene.children[j].colorsNeedUpdate = true;
 
-          scene.children[j].material.uniforms.amplitude.value = amplitude;
-          if(scene.children[j].geometry.radius > 10){
+
+
+          if(circles[j].geometry.radius > 10){
+
+
+                 circles[j].material.uniforms.amplitude.value = amplitude || 1;
+
+                 circles[j].geometry.colorsNeedUpdate = true;
+
+
+                 for (var f = 0; f < circles[j].geometry.faces.length; f++){
+
+                    if(f % 2 === 0){
+                      var face = circles[j].geometry.faces[f]
+                      face.color.setRGB(Math.random(), Math.random(), 0.3)
+                    }
+
+                 }
+
+
+                  // scene.children[j].rotate.x += 0.02
+
+            }
+
+
             // scene.children[j].rotation.x += 0.1;
             // scene.children[j].rotation.y += 0.1;
-
-          }
+             // scene.children[j]
           else {
-            scene.children[j].material.uniforms.color.value.r = Math.random()
-            scene.children[j].material.uniforms.color.value.g = Math.random()
-            scene.children[j].material.uniforms.color.value.b = Math.random()
+            // scene.children[j].material.uniforms.userColor.value.r = Math.random()
+            // scene.children[j].material.uniforms.userColor.value.g = Math.random()
+            // scene.children[j].material.uniforms.userColor.value.b = Math.random()
           }
 
 
