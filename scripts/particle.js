@@ -86,9 +86,7 @@ function init() {
       //   //   radius = 2
       //   // }
 
-      // console.log(circle.position.x)
-      var axes = new THREE.AxisHelper(200);
-      scene.add(axes);
+
 
 
 
