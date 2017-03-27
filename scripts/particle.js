@@ -69,8 +69,8 @@ function calcFieldOFView(){
   return width / 2
 }
 var circles = [],
-            min    =  0.5,
-           max     = 20;
+              min     =  0.5,
+              max     = 20;
 
 
 
@@ -103,49 +103,7 @@ function init() {
 
         while(!isValid(c)){
 
-
-
-           var whichAxis;
-
-          if(Math.random() > 0.5 ){
-            whichAxis = true;
-          }
-          else {
-            whichAxis = false
-          }
-          var x, y;
-          if(whichAxis){
-            x = Math.random() * 26;
-
-
-
-                    if(Math.random() > .5){
-                       y = (Math.random() * 15);
-                    }
-                    else{
-                       y = -(Math.random() * 15);
-                    }
-
-
-
-          }
-          else {
-            x = -(Math.random() * 26);
-
-
-
-                    if(Math.random() > .5){
-                       y = (Math.random() * 15);
-                    }
-                    else{
-                       y = -(Math.random() * 15);
-                    }
-
-
-
-          }
-
-              c.position.set(x,y, 0)
+            c.position.set(whichAxisX(),whichAxisY(), 0)
 
              counter++
              if(counter > 200000){
@@ -181,6 +139,31 @@ function init() {
       circles.push(c)
       drawCircle(c)
       requestAnimationFrame(draw)
+    }
+
+
+    function whichAxisY(){
+      var y;
+     if(Math.random() > .5){
+             y = (Math.random() * 15);
+          }
+          else{
+             y = -(Math.random() * 15);
+          }
+
+          return y
+    }
+
+
+    function whichAxisX(){
+      var x;
+      if(Math.random() > .5){
+           x = (Math.random() * 25);
+        }
+        else{
+           x = -(Math.random() * 25);
+        }
+        return x
     }
 
 
@@ -418,6 +401,7 @@ function render() {
 
                  }
 
+                 // circles[j].position.z += -0.01
 
                   // scene.children[j].rotate.x += 0.02
 

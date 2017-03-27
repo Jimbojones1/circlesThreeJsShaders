@@ -19,7 +19,7 @@
     uniform float amplitude;
     attribute float displacement;
     varying vec3 vNormal;
-    varying vec3 p;
+    // varying vec3 p;
     varying vec3 vColor;
 
     varying float musicBox;
@@ -31,7 +31,7 @@
       musicBox = amplitude;
       // gl_PointSize — contains size of rasterized points, in pixels
       // gl_PointSize = size;
-      p = position;
+      // p = position;
       // multiply our displacement by the
       // amplitude. The amp will get animated
 
@@ -67,7 +67,7 @@
     uniform float rad;
     varying vec3 vNormal;
     uniform sampler2D texture;
-    varying vec3 p;
+    // varying vec3 p;
     // vec3 r;
     uniform vec3 userColor;
     varying vec3 vColor;
